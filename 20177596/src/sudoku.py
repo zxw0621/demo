@@ -6,6 +6,7 @@ this is Sudoku code via z_x_w
 
 import sys
 
+
 def fun(_x_, _y_):
     '''
     确定行列上不重复
@@ -38,14 +39,17 @@ def new_locate(_x_, _y_, _a_, _b_):
     :param _y_:
     :return:
     '''
-    if M % 3 == 0:
-        _c_ = 3
-        _r_ = int(M / 3)
-    elif M % 2 == 0:
-        _c_ = 2
-        _r_ = int(M / 2)
-    _a_ = int(_x_ // _c_ * _c_)
-    _b_ = int(_y_ // _r_ * _r_)
+    _c_ = 0
+    _r_ = 0
+    if 105 % M != 0:
+        if M % 3 == 0:
+            _c_ = 3
+            _r_ = int(M / 3)
+        elif M % 2 == 0:
+            _c_ = 2
+            _r_ = int(M / 2)
+        _a_ = int(_x_ // _c_ * _c_)
+        _b_ = int(_y_ // _r_ * _r_)
     return _a_, _b_, _c_, _r_
 
 
@@ -136,10 +140,14 @@ def dfs(_x_, _y_):
         DATA[_x_][_y_] = 0
 
 
+NAME_M = sys.argv[1]
+NAME_N = sys.argv[3]
 N = int(sys.argv[4])
-M = int(sys.argv[3])
-IN_FILE = sys.argv[1]
-OUT_FILE = sys.argv[2]
+M = int(sys.argv[2])
+NAME_IN_FILE = sys.argv[5]
+NAME_OUT_FILE = sys.argv[7]
+IN_FILE = sys.argv[6]
+OUT_FILE = sys.argv[8]
 DATA = []
 FP = open(IN_FILE)
 OP = open(OUT_FILE, 'w+')
